@@ -7,16 +7,17 @@
   
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous"/>
 <link rel="stylesheet" href="src/styles.css"/>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
   <div id="root">
   <div class="app">
   <div class="container">
     <div class="weather">
-      <form>
+      <form id="searchEngine">
         <div class="row">
           <div class="col-9">
-            <input type="search"placeholder="Enter a city..."class="form-control search-input">
+            <input id="cityInput"type="search"placeholder="Enter a city..." autocomplete="off" class="form-control search-input">
           </div>
           <div class="col-3 p-0">
             <input type="submit"class="btn btn-primary w-100"value="Search">
@@ -26,19 +27,19 @@
       <div class="weatherInfo">
         <div class="row">
           <div class="col-6">
-            <h1>Houston</h1>
+            <h1 id="city">Houston</h1>
             <ul>
               <li>
-                <span>
+                <span id="dateAndTime">
                   Tuesday 16:59
-                </span>
-                , clear sky
+                </span>,
+                <span id="details"> Clear sky</span>
               </li>
               <li>
                 Humidity: 
-                <strong>58%</strong>
-                , Wind:
-                <strong>8.75 km/h</strong>
+                <strong id="humidity">58</strong>%, 
+                Wind:
+                <strong id="wind">8.75</strong>km/h
               </li>
             </ul>
           </div>
@@ -106,7 +107,7 @@
         </div>
       </div>
       <footer>
-        This project was coded by <a href= "https://www.linkedin.com/in/vanessa-iwen-040831173/?originalSubdomain=es"target="_blank" class="resume">K.Vanessa Iwen</a>and is open-sourced on <a href= "https://github.com/iwenki/Vanilla-weather-app" target="_blank" class="git">GitHub</a> and hosted by Netlify
+        This project was coded by <a href= "https://www.linkedin.com/in/vanessa-iwen-040831173/?originalSubdomain=es"target="_blank" class="resume">K.Vanessa Iwen</a> and is open-sourced on <a href= "https://github.com/iwenki/Vanilla-weather-app" target="_blank" class="git">GitHub</a> and hosted by Netlify
       </footer>
 </div>
 </div>

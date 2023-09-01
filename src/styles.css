@@ -98,3 +98,45 @@ body {
   text-align: center;
   color: rgba(39, 33, 66, 0.4);
 }
+.weatherForecast {
+  text-align: center;
+  margin: 40px 0;
+  border-bottom: 1px solid #f9f7fe;
+  padding-bottom: 50px;
+}
+
+.weatherForecast .forecast-time {
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  color: rgba(39, 33, 66, 0.4);
+}
+
+.weatherForecast .forecast-temperature {
+  font-style: normal;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #f65282;
+  font-weight: bold;
+}
+
+.weatherForecast .forecast-temperature-min {
+  margin-left: 10px;
+  opacity: 0.6;
+}
+
+.weather .weatherForecast canvas {
+  display: block;
+  margin: 20px auto;
+}
+.weatherInfo {
+  margin-top: 20px;
+}
+
+.weatherInfo .temperature-container {
+  margin-top: 30px;
+  align-items: center;
+}
+.weather li #details{
+text-transform: capitalize;
+}
