@@ -37,7 +37,12 @@ function handleResponse(response) {
   description.innerHTML=response.data.condition.description;
   wind.innerHTML= Math.round(response.data.wind.speed);
   city.innerHTML=response.data.city;
-  };
+  let iconElement=document.querySelector("#mainIcon");
+  iconElement.setAttribute(
+    "src",
+    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`);
+}
+
 
 function search(event) {
   event.preventDefault();

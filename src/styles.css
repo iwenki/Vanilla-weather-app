@@ -7,7 +7,7 @@ body {
 }
 .weather {
   font-family: "Cerebri-Sans", Helvetica, Arial, sans-serif;
-  background: white;
+  background: #a7ced3;
   border-radius: 16px;
   box-shadow: 0px 30px 50px rgba(65, 50, 100, 0.08);
   padding: 40px;
@@ -24,13 +24,13 @@ body {
   padding: 15px 20px;
   display: inline-block;
   border-radius: 6px;
-  color: rgba(39, 33, 66, 0.4);
+  color: rgba(39, 33, 66, 0.6);
   font-size: 16px;
   height: 50px;
   line-height: 20px;
 }
 .weather .btn {
-  background: #885df1;
+  background: #f58383;
   font-weight: bold;
   font-size: 16px;
   padding: 15px 0;
@@ -43,7 +43,6 @@ body {
   font-weight: bold;
   font-size: 38px;
   line-height: 48px;
-
   color: #272142;
 }
 
@@ -55,14 +54,14 @@ body {
 .weather li {
   font-weight: 500;
   margin-bottom: 5px;
-  color: rgba(39, 33, 66, 0.4);
+  color: rgba(39, 33, 66, 0.7);
   font-size: 16px;
   line-height: 20px;
   list-style: none;
 }
 
 .weather li strong {
-  color: #f65282;
+  color: #f58383;
   font-weight: normal;
 }
 
@@ -77,7 +76,7 @@ body {
   line-height: 1;
 }
 
-.weather canvas {
+#mainIcon {
   margin: 10px 0;
 }
 
@@ -96,7 +95,7 @@ body {
   margin-top: 40px;
   line-height: 18px;
   text-align: center;
-  color: rgba(39, 33, 66, 0.4);
+  color: rgba(39, 33, 66, 0.6);
 }
 .weatherForecast {
   text-align: center;
@@ -109,14 +108,14 @@ body {
   font-size: 16px;
   line-height: 20px;
   text-align: center;
-  color: rgba(39, 33, 66, 0.4);
+  color: rgba(39, 33, 66, 0.7);
 }
 
 .weatherForecast .forecast-temperature {
   font-style: normal;
   font-size: 18px;
   line-height: 1.5;
-  color: #f65282;
+  color:#f58383;
   font-weight: bold;
 }
 
