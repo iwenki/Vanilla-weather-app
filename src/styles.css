@@ -80,6 +80,12 @@ body {
   margin: 10px 0;
 }
 
+.weather .unit .active{
+  color:rgb(33, 33, 33);
+  cursor:default;
+  text-decoration: none;
+}
+
 .weather .unit {
   color: rgb(33, 33, 33);
   font-size: 28px;

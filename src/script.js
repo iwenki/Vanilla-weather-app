@@ -28,11 +28,12 @@ time.innerHTML = formatTime(date);
 
 function handleResponse(response) { 
   let temperature=document.querySelector(".temperature");
+  celsiusTemp = response.data.temperature.current;
   let humidity=document.querySelector("#humidity");
   let wind=document.querySelector("#wind");
   let description=document.querySelector("#details");
   let city=document.querySelector("#city");
-  temperature.innerHTML= Math.round(response.data.temperature.current);
+  temperature.innerHTML= Math.round(celsiusTemp);
   humidity.innerHTML= Math.round(response.data.temperature.humidity);
   description.innerHTML=response.data.condition.description;
   wind.innerHTML= Math.round(response.data.wind.speed);
@@ -42,7 +43,6 @@ function handleResponse(response) {
     "src",
     `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`);
 }
-
 
 function search(event) {
   event.preventDefault();
@@ -54,7 +54,28 @@ function search(event) {
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
   axios.get(apiUrl).then(handleResponse);
 }
-activateApi("Houston");
+function changeUnit(event) {
+  event.preventDefault();
+  let temperature = document.querySelector(".temperature");
+  let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
+  fahrenheit.classList.add("active");
+  celsius.classList.remove("active");
+  temperature.innerHTML = Math.round(fahrenheitTemp);
+}
+function changeBack(event) {
+  event.preventDefault();
+  let temperature = document.querySelector(".temperature");
+  celsius.classList.add("active");
+  fahrenheit.classList.remove("active");
+  temperature.innerHTML = Math.round(celsiusTemp);
+}
+
 let form=document.querySelector("#searchEngine");
 form.addEventListener("submit", search);
+let celsiusTemp=null;
+let fahrenheit = document.querySelector("#fahrenheit");
+fahrenheit.addEventListener("click", changeUnit);
+let celsius = document.querySelector("#celsius");
+celsius.addEventListener("click", changeBack);
 
+activateApi("Houston");
