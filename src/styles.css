@@ -1,5 +1,10 @@
 body {
-  background: #f9f7fe;
+  background-image:url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/095/937/original/pexels-ithalu-dominguez-907485.jpg?1693944861");
+  background-size: cover;
+}
+.darkTheme{
+  background-image: url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/095/934/original/pexels-kai-pilger-1341279.jpg?1693942518");
+  background-size:cover;
 }
 .app{
   margin:60px auto;
@@ -12,6 +17,9 @@ body {
   box-shadow: 0px 30px 50px rgba(65, 50, 100, 0.08);
   padding: 40px;
   color: rgb(135, 135, 135);
+}
+.darkTheme .weather {
+background:#b3a7d3;
 }
 .weather form {
   margin-top: 40px;
@@ -123,6 +131,12 @@ body {
   line-height: 1.5;
   color:#f58383;
   font-weight: bold;
+}
+.darkTheme .weatherForecast, .darkTheme .forecast-temperature, .darkTheme .weather li strong{
+  color:#2e2d9a;
+}
+.darkTheme .weather .btn{
+  background:#2e2d9a;
 }
 
 .weatherForecast .forecast-temperature-min {

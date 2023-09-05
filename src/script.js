@@ -28,20 +28,41 @@ time.innerHTML = formatTime(date);
 
 function handleResponse(response) { 
   let temperature=document.querySelector(".temperature");
-  celsiusTemp = response.data.temperature.current;
+  
   let humidity=document.querySelector("#humidity");
   let wind=document.querySelector("#wind");
   let description=document.querySelector("#details");
   let city=document.querySelector("#city");
+  let dayNight=response.data.condition.icon;
+  let iconElement=document.querySelector("#mainIcon");
+  let body=document.querySelector("body");
+
+  celsiusTemp = response.data.temperature.current;
+
   temperature.innerHTML= Math.round(celsiusTemp);
   humidity.innerHTML= Math.round(response.data.temperature.humidity);
   description.innerHTML=response.data.condition.description;
   wind.innerHTML= Math.round(response.data.wind.speed);
   city.innerHTML=response.data.city;
-  let iconElement=document.querySelector("#mainIcon");
   iconElement.setAttribute(
     "src",
-    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`);
+    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${dayNight}.png`);
+  if (
+    dayNight === "clear-sky-night" ||
+    dayNight === "few-clouds-night" ||
+    dayNight === "scattered-clouds-night" ||
+    dayNight === "broken-clouds-night" ||
+    dayNight === "shower-rain-night" ||
+    dayNight === "rain-night" ||
+    dayNight === "thunderstorm-night" ||
+    dayNight === "snow-night" ||
+    dayNight === "mist-night"
+  ) {
+    body.classList.add("darkTheme");
+  } else {
+    body.classList.remove("darkTheme");
+  }
+  
 }
 
 function search(event) {
