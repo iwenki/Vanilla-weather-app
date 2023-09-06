@@ -62,7 +62,34 @@ function handleResponse(response) {
   } else {
     body.classList.remove("darkTheme");
   }
+  activateForecast(response.data.coordinates);
   
+}
+function activateForecast(coordinates){
+  let apiKey = "cbc90ba0a21t28a990f44b7f6f3ea68o";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=metric`;
+axios.get(apiUrl).then(displayForecast);
+}
+function displayForecast(response){
+  console.log(response);
+  let forecast=document.querySelector("#fiveDayForecast");
+  let forecastContent = `<div class="row">`;
+  let days=["Thurs","Fri","Sat","Sun","Mon"];
+  days.forEach(function(day) {
+  forecastContent=forecastContent+
+       `<div class="col">
+          <div class="weatherForecastPreview">
+            <div class="forecast-time">${day}</div>
+            <canvas width="38" height="38"></canvas>
+            <div class="forecast-temperature">
+              <span class="forecast-temperature-max">25°</span>
+              <span class="forecast-temperature-min">15°</span>
+            </div>
+          </div>
+        </div>`;
+      });
+  forecastContent=forecastContent+`</div>`;
+  forecast.innerHTML=forecastContent;
 }
 
 function search(event) {
