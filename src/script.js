@@ -22,9 +22,6 @@ function formatTime(date) {
     return `Last update: ${todayDay},${hour}:${minutes}`;
   }
 }
-let time = document.querySelector("#dateAndTime");
-let date = new Date();
-time.innerHTML = formatTime(date);
 
 function handleResponse(response) { 
   let temperature=document.querySelector(".temperature");
@@ -63,31 +60,50 @@ function handleResponse(response) {
     body.classList.remove("darkTheme");
   }
   activateForecast(response.data.coordinates);
-  
 }
+function formatDailyTime(time){
+let date = new Date(time * 1000);
+let day=date.getDay();
+let week = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+return week[day]; 
+}
+
 function activateForecast(coordinates){
   let apiKey = "cbc90ba0a21t28a990f44b7f6f3ea68o";
   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=metric`;
 axios.get(apiUrl).then(displayForecast);
 }
 function displayForecast(response){
-  console.log(response);
+  let dailyWeather=response.data.daily;
   let forecast=document.querySelector("#fiveDayForecast");
   let forecastContent = `<div class="row">`;
-  let days=["Thurs","Fri","Sat","Sun","Mon"];
-  days.forEach(function(day) {
-  forecastContent=forecastContent+
-       `<div class="col">
+  dailyWeather.forEach(function(dailyWeatherDay,index) {
+    if(index<6 && index>0){
+  forecastContent =
+    forecastContent +
+    `<div class="col">
           <div class="weatherForecastPreview">
-            <div class="forecast-time">${day}</div>
-            <canvas width="38" height="38"></canvas>
+            <div class="forecast-time">${formatDailyTime(dailyWeatherDay.time)}</div>
+            <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${dailyWeatherDay.condition.icon}.png"></img>
             <div class="forecast-temperature">
-              <span class="forecast-temperature-max">25°</span>
-              <span class="forecast-temperature-min">15°</span>
+              <span class="forecast-temperature-max">${Math.round(
+                dailyWeatherDay.temperature.maximum
+              )}°</span>
+              <span class="forecast-temperature-min">${Math.round(
+                dailyWeatherDay.temperature.minimum
+              )}°</span>
             </div>
           </div>
         </div>`;
-      });
+      }});
   forecastContent=forecastContent+`</div>`;
   forecast.innerHTML=forecastContent;
 }
@@ -118,6 +134,9 @@ function changeBack(event) {
   temperature.innerHTML = Math.round(celsiusTemp);
 }
 
+let time = document.querySelector("#dateAndTime");
+let date = new Date();
+time.innerHTML = formatTime(date);
 let form=document.querySelector("#searchEngine");
 form.addEventListener("submit", search);
 let celsiusTemp=null;
