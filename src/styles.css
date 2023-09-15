@@ -159,3 +159,6 @@ background:#b3a7d3;
 .weather li #details{
 text-transform: capitalize;
 }
+#photographer{
+  padding-top: 5px;
+}
